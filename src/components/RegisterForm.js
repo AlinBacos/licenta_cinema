@@ -11,7 +11,7 @@ function RegisterForm() {
             <label>Last Name</label><br/>
             <input type="text" placeholder="Enter your Last Name"></input><br/>
             <label>Email</label><br/>
-            <input type="text" placeholder="Enter your Email"></input><br/>
+            <input type="email" placeholder="Enter your Email"></input><br/>
             <label>Password</label><br/>
             <input type="password" placeholder="Choose your Password"></input><br/>
             <label>Confirm Password</label><br/>
@@ -23,5 +23,4 @@ function RegisterForm() {
     </div>
   )
 }
-
 export default RegisterForm
