@@ -31,7 +31,7 @@ function LoginForm() {
     await signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     const user = userCredential.user;
-    navigate("/Register");
+    navigate("Register");
   })
   .catch((error) => {
     const errorCode = error.code;

@@ -44,10 +44,10 @@
     outline:none;
 }
 
-.add-movie-form input[type="button"]{
+.add-movie-form button{
     width:300px;
     height:35px;
-    margin-top:60px;
+    margin-top:30px;
     border:none;
     background-color:#673AB7 ;
     font-size:18px;
