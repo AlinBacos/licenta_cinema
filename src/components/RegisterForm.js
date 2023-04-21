@@ -1,26 +1,50 @@
 import React from 'react'
 import "./components_style/RegisterForm.css"
+import {auth} from '../database/firebase'
+import {useState, useEffect} from "react";
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 function RegisterForm() {
+  const[email,setEmail] = useState("");
+  const[password,setPassword] = useState("");
+  const navigate = useNavigate();
+
+
+  const handleEmailChange = (e) =>{
+    setEmail(e.target.value);
+  }
+
+  const handlePasswordChange = (e) =>{
+    setPassword(e.target.value);
+  }
+
+  const register = async() =>{
+    await createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      console.log(user);
+      navigate("/Login");
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
+  }
   return (
     <div className="register-component">
       <div className="register-form">
         <form>
-            <label>First Name</label><br/>
-            <input type="text" placeholder="Enter your First Name"></input><br/>
-            <label>Last Name</label><br/>
-            <input type="text" placeholder="Enter your Last Name"></input><br/>
             <label>Email</label><br/>
-            <input type="email" placeholder="Enter your Email"></input><br/>
+            <input type="email" value={email} onChange= {handleEmailChange} placeholder="Enter your email"></input><br/>
             <label>Password</label><br/>
-            <input type="password" placeholder="Choose your Password"></input><br/>
-            <label>Confirm Password</label><br/>
-            <input type="password" placeholder="Confirm your Password"></input><br/>
-            <input type="button" value="Register"></input><br/>
+            <input type="password" value={password} onChange= {handlePasswordChange} placeholder="Enter your password"></input><br/>
+            <button onClick={register}>Register</button><br/>
             <a href="/Login"><h4>Already have an account?Login now!</h4></a>
         </form>
     </div>
     </div>
   )
 }
+
 export default RegisterForm

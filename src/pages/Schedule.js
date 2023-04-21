@@ -4,7 +4,6 @@ import "./pages_style/Schedule.css"
 function Schedule() {
   return (
     <div className="schedule">
-
     </div>
   )
 }
