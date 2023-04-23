@@ -18,11 +18,11 @@ export default function Slideshow() {
     <div className="Slideshow">
       <div className="Carousel">
         <Carousel breakPoints={breakPoints}>
-        <img src={TheNiceGuys} style={{height:"600px"} } border-radius="100px" />
-        <img src={Coraline} style={{height:"600px"}} />
-        <img src={LastNightInSoho} style={{height:"600px"}} />
-        <img src={EternalSunshine} style={{height:"600px"}} />
-        <img src={GrandBudapest} style={{height:"600px"}} />
+        <img src={LastNightInSoho} style={{height:"600px",width:"80vw"}} border-radius="100px" />
+        <img src={Coraline} style={{height:"600px",width:"80vw"}} />
+        <img src={TheNiceGuys} style={{height:"600px",width:"80vw"}} />
+        <img src={EternalSunshine} style={{height:"600px",width:"80vw"}} />
+        <img src={GrandBudapest} style={{height:"600px",width:"80vw"}} />
         </Carousel>
         </div>
     </div>

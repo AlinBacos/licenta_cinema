@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+  }
+
+  .movie-schedule .card{
+    background-color: #040401;
+    color: white;
+    padding: 0 1rem;
+    width:450px;
+    height:300px;
+    float:left;
+  }
