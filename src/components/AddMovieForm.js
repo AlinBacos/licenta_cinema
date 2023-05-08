@@ -1,22 +1,21 @@
 import React from 'react'
 import "./components_style/AddMovieForm.css"
 import { useState} from 'react'
+import {storage} from '../database/firebase'
+import {ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 function AddMovieForm() {
-// const [details, setDetails] = useState({
-//     title:'',
-//     year:'',
-//     genre:'',
-//     director:'',
-//     description:'',
-//     price:'',  
-// })
 const [title,setTitle]= useState("");
 const [year,setYear]= useState("");
 const [genre,setGenre]= useState("");
 const [director,setDirector]= useState("");
 const [description,setDescription]= useState("");
 const [price,setPrice]= useState("");
+const [imageUpload, setImageUpload] = useState(null);
+
+const delay = ms => new Promise(
+  resolve => setTimeout(resolve, ms)
+);
 
 const handleTitleChange = (e) =>{
   setTitle(e.target.value);
@@ -42,10 +41,22 @@ const handlePriceChange = (e) =>{
   setPrice(e.target.value);
 }
 
+const handleImage = (e) =>{
+  e.preventDefault();
+  setImageUpload(e.target.files[0]);
+}
+
+// const uploadFile = async(e) =>{
+//   if(imageUpload == null){
+//     return;
+//   }
+//   const imageRef = ref(storage, `posters/${imageUpload.name}`);
+//   uploadBytes(imageRef, imageUpload);
+// }
+
+
 const PostData =async(e)=>{
    e.preventDefault()
-
-  //  const{title,year,genre,director,description,price}=details;
    const res=await fetch("https://authentication-firebase-19bfa-default-rtdb.firebaseio.com/movie.json",
    {
        method:'POST',
@@ -61,6 +72,8 @@ const PostData =async(e)=>{
         price,
        })
     })
+    const imageRef = ref(storage, `posters/${imageUpload.name}`);
+    const upload=await uploadBytes(imageRef, imageUpload);
     window.location.reload(false);
   }
 
@@ -68,6 +81,8 @@ const PostData =async(e)=>{
     <div className="add-movie-component">
       <div className="add-movie-form">
         <form>
+            <label>Poster</label>
+            <input type="file" onChange={handleImage}></input>
             <label>Title</label><br/>
             <input type="text" placeholder="Title..." onChange={handleTitleChange}></input><br/>
             <label>Year</label><br/>
@@ -81,6 +96,7 @@ const PostData =async(e)=>{
             <label>Ticket Price</label><br/>
             <input type="number" placeholder="Price..." onChange={handlePriceChange}></input><br/>
             <button onClick={PostData}>Add Movie</button><br/>
+            {/* <button onClick={uploadFile}>Image</button> */}
         </form>
     </div>
     </div>

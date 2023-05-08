@@ -3,16 +3,16 @@
     margin:0;
 }
 
-.add-movie-component{
+.feedback-div{
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.add-movie-form{
+.feedback-form{
     display:flex;
     width:620px;
-    height:700px;
+    height:400px;
     background-color:white;
     border-radius:10px;
     margin:0 auto;
@@ -23,19 +23,19 @@
     -o-box-shadow: 10px -10px  #673AB7;
 }
 
-.add-movie-form form{
+.feedback-form form{
     width:300px;
     margin:0 auto;
 }
 
-.add-movie-form form label{
+.feedback-form form label{
     display:flex;
     margin-top:20px;
     font-size:18px;
     color:#070702d3;
 }
 
-.add-movie-form form input{
+.feedback-form form input{
     width:100%;
     padding: 7px;
     border:none;
@@ -44,16 +44,12 @@
     outline:none;
 }
 
-.add-movie-form button{
+.feedback-form button{
     width:300px;
     height:35px;
-    margin-top:30px;
+    margin-top:60px;
     border:none;
     background-color:#673AB7 ;
     font-size:18px;
     color:white;
-}
-
-h4{
-    text-align: center;
 }
