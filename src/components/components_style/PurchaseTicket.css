@@ -1,0 +1,137 @@
+.purchase-ticket {
+  background-color: #0e0e09;
+  /* background-image: url("C:\Users\alinb\Desktop\licenta\src\images\wallpaper.jpg"); */
+  height: 100vh;
+  width: 100vw;
+  color: white;
+  padding-top: 80px;
+  overflow: auto;
+  overflow-y: scroll;
+}
+
+.purchase-ticket .reservation label {
+  color: white;
+  padding-right: 10px;
+}
+
+.reservation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.seat {
+  background-color: white;
+  height: 40px;
+  width: 40px;
+  margin: 3px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.seat-available {
+  background-color: white;
+  height: 15px;
+  width: 15px;
+  margin: 3px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.seat-selected {
+  background-color: green;
+  height: 15px;
+  width: 15px;
+  margin: 3px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.seat-reserved {
+  background-color: red;
+  height: 15px;
+  width: 15px;
+  margin: 3px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.seats:not(.reserved):hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.showcase .seats:not(.reserved):hover {
+  cursor: default;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: gray;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.showcase li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+}
+
+.showcase li small {
+  margin-left: 2px;
+}
+
+.row {
+  display: flex;
+}
+
+.reservation ul {
+  display: flex;
+}
+
+.screen {
+  background-color: white;
+  height: 200px;
+  width: 100%;
+  margin: 15px 0;
+  transform: rotateX(180deg);
+  box-shadow: 0 3px 10px white;
+}
+
+.seats {
+  background-color: white;
+  height: 35px;
+  width: 35px;
+  margin: 3px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.seats-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr); /* Define 4 columns */
+  grid-template-rows: repeat(8, 1fr); /* Define 3 rows */
+  gap: 10px; /* Define the gap between cells */
+}
+
+button {
+  width: 200px;
+  height: 35px;
+  margin-top: 5px;
+  border: none;
+  background-color: #db9200;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.reservation {
+  height: 800px;
+  width: 1000px;
+  background-color: #393e46;
+  margin: 0 auto;
+  border-radius: 10px;
+}

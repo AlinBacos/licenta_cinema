@@ -7,14 +7,16 @@ import { useState, useEffect } from "react";
 import { format } from "date-fns";
 import { getStorage, getDownloadURL, listAll } from "firebase/storage";
 import { storage } from "../database/firebase";
+import { useNavigate } from "react-router-dom";
 
-function MovieSchedule() {
+const MovieSchedule = () => {
   const [todoData, setTodoData] = useState([]);
   const [selectedValue, setSelectedValue] = useState("");
   const [text, setText] = useState("");
   const [weekDay, setWeekDay] = useState("");
   const [imageUrls, setImageUrls] = useState([]);
   const [imageNames, setImageNames] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const imagesRef = sRef(storage, `posters`);
@@ -63,6 +65,10 @@ function MovieSchedule() {
   };
   const selectSunday = (event) => {
     setWeekDay("Sunday");
+  };
+
+  const purchase = () => {
+    navigate("/PurchaseTicket");
   };
 
   return (
@@ -122,11 +128,17 @@ function MovieSchedule() {
             <div className="card">
               <div className="card-data">
                 <h1>{item.title}</h1>
-                <h1>{item.year}</h1>
-                <h1>Genre:{item.genre}</h1>
-                <h1>Directed by:{item.director}</h1>
-                <h1>{item.description}</h1>
-                <h1>Date:{item.date}</h1>
+                <br></br>
+                <h2>{item.year}</h2>
+                <h2>Directed by:{item.director}</h2>
+                <h2>{item.description}</h2>
+                <h2>Date:{item.date}</h2>
+                <br></br>
+                <h3>{item.genre}</h3>
+                <br></br>
+                <button id="purchase" onClick={purchase}>
+                  BUY TICKET
+                </button>
               </div>
               {imageUrls.map((url, index) => {
                 imageNames[index] = imageNames[index].replace(
@@ -138,7 +150,7 @@ function MovieSchedule() {
                     <div className="movie-poster">
                       <img
                         width="360px"
-                        height="360px"
+                        height="370px"
                         key={index}
                         src={url}
                         alt={imageNames[index]}
@@ -166,6 +178,6 @@ function MovieSchedule() {
       })}
     </div>
   );
-}
+};
 
 export default MovieSchedule;

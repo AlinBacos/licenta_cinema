@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Feedback from "./pages/Feedback";
 import Footer from "./components/Footer";
+import PurchaseTicket from "./components/PurchaseTicket";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/AddMovie" element={<AddMovie />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
+        <Route path="/PurchaseTicket" element={<PurchaseTicket />} />
       </Routes>
     </>
   );

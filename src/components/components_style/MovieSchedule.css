@@ -7,19 +7,25 @@ body {
 }
 
 .movie-schedule .card {
-  background-color: #393e46;
+  /* background-color: #393e46; */
+  position: relative;
   color: white;
   margin-right: 10px;
   width: 100vw;
   height: 370px;
   float: left;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   font-family: Garamond, serif;
   margin-bottom: 10px;
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   overflow: hidden;
+  padding-left: 5px;
   /* font-family: 'Courier New', monospace; */
+}
+
+.movie-schedule .card:hover {
+  background-color: #393e46;
 }
 
 .week-days ul {
@@ -29,8 +35,10 @@ body {
 }
 
 .week-days li {
-  margin-right: 8px;
+  /* margin-right: 8px; */
   margin-bottom: 10px;
+  padding-left: 15px;
+  margin-top: 5px;
 }
 
 .week-days button:active {
@@ -58,6 +66,45 @@ body {
   margin-top: 5px;
   border: none;
   background-color: #393e46;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.card-data {
+  margin-left: 20px;
+  order: 2;
+}
+
+.movie-poster {
+  order: 1;
+  padding-left: 10px;
+}
+
+.movie-schedule h1 {
+  color: white;
+  background: #673ab7;
+  border-radius: 5px;
+  padding-left: 20px;
+}
+
+.movie-schedule h3 {
+  color: white;
+  background: #673ab7;
+  border-radius: 5px;
+  width: 150px;
+  height: 25px;
+  padding-top: 2px;
+  padding-left: 20px;
+}
+
+.movie-schedule #purchase {
+  width: 200px;
+  height: 35px;
+  margin-top: 60px;
+  border: none;
+  background-color: #db9200;
   font-size: 18px;
   color: white;
   cursor: pointer;
