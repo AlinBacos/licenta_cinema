@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import "./components_style/NavBar.css";
+import { useNavigate } from "react-router-dom";
 
 export default function NavBar() {
+  const navigate = useNavigate();
+  const redirect = () => {
+    navigate("/Login");
+  };
+
   return (
     <nav className="nav">
       <ul>
@@ -11,8 +17,8 @@ export default function NavBar() {
         <CustomLink to="/About">About</CustomLink>
         <CustomLink to="/Feedback">Feedback</CustomLink>
         <CustomLink to="/AddMovie">Add Movie</CustomLink>
-        <CustomLink to="/Login">Login</CustomLink>
       </ul>
+      <button onClick={redirect}>Login</button>
     </nav>
   );
 }
