@@ -1,17 +1,23 @@
 import React from "react";
 import "./components_style/PurchaseTicket.css";
 import { db } from "../database/firebase";
-import { set, ref, onValue } from "firebase/database";
-import { useState, useEffect } from "react";
+import { set, ref, push, onValue } from "firebase/database";
+import { useState, useEffect, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import StripeCheckout from "react-stripe-checkout";
+import { v4 as uuidv4 } from "uuid";
+import jsPDF from "jspdf";
+import QRCode from "qrcode-svg";
+import domtoimage from "dom-to-image";
+
+const qrCodeGenerator = require("qrcode");
 
 function PurchaseTicket() {
   const [options, setOption] = useState([]);
   const [numberOfSeats, setNumberOfSeats] = useState(0);
   const [seatSelected, setSeatSelected] = useState(false);
   const [selected, setSelected] = useState([]);
-  // const [todoData, setTodoData] = useState([]);
+  const uniqueValue = uuidv4();
 
   const onToken = (token) => {
     fetch("/save-stripe-token", {
@@ -22,6 +28,7 @@ function PurchaseTicket() {
         alert(`We are in business`);
       });
     });
+    sendEmail();
   };
 
   const [seats, setSeats] = useState(
@@ -30,15 +37,21 @@ function PurchaseTicket() {
       .map(() => ({ state: "Not Selected" }))
   );
 
-  const sendEmail = (e) => {
+  const sendEmail = async () => {
+    const qrData = uniqueValue;
+    console.log(qrData);
+    const qrCodeDataUrl = await qrCodeGenerator.toDataURL(qrData);
+
     const savedValue = localStorage.getItem("mySelect");
     const messageSent = `Movie: Jaws \n
     Date: 12/6/2023\n
     Seats number: ${savedValue}\n`;
 
     const params = {
-      name: "alinbacos@yahoo.com",
+      from_name: "Zizy's Cinema",
+      to_email: "gamesaccount14@yahoo.ro",
       message: messageSent,
+      attachment: qrCodeDataUrl,
     };
 
     emailjs
@@ -53,6 +66,16 @@ function PurchaseTicket() {
           window.location.reload(false);
         }
       );
+
+    const databaseRef = ref(db, "qrcode");
+    const newChildRef = push(databaseRef);
+    set(newChildRef, qrData)
+      .then(() => {
+        console.log("Number saved successfully!");
+      })
+      .catch((error) => {
+        console.error("Error saving number:", error);
+      });
   };
 
   const handleSeatClick = (seatIndex) => {
@@ -110,23 +133,23 @@ function PurchaseTicket() {
             </option>
           ))}
         </select>
-        <ul class="showcase">
+        <ul className="showcase">
           <li>
-            <div class="seat-available"></div>
+            <div className="seat-available"></div>
             <small>Available</small>
           </li>
           <li>
-            <div class="seat-selected"></div>
+            <div className="seat-selected"></div>
             <small>Selected</small>
           </li>
           <li>
-            <div class="seat-reserved"></div>
+            <div className="seat-reserved"></div>
             <small>Reserved</small>
           </li>
         </ul>
-        <div class="movie-room">
-          <div class="screen"></div>
-          <div class="seats-grid">
+        <div className="movie-room">
+          <div className="screen"></div>
+          <div className="seats-grid">
             {seats.map((seat, index) => (
               <div
                 className="seats"
@@ -144,17 +167,18 @@ function PurchaseTicket() {
                 {index}
               </div>
             ))}
+            {/* <QRCode value={uniqueValue} /> */}
           </div>
         </div>
         <p>You have selected {numberOfSeats} seats</p>
-        {/* <button onClick={handleSubmit}>Buy Ticket</button> */}
-        <StripeCheckout
+        <button onClick={sendEmail}>Buy Ticket</button>
+        {/* <StripeCheckout
           token={onToken}
           name="You're just one step away from viewing the movie!"
           currency="ron"
           amount="1900"
           stripeKey="pk_test_51NAyZOK6WFoyNq8XTXUqWGcW4nJXf7N3s8T3ym7fVQJq0WqkBaHLw5wvF43HygtQogao1l3RBkukr3HjP21grHcs00blnOre0h"
-        />
+        /> */}
       </div>
     </div>
   );

@@ -18,15 +18,13 @@ function Footer() {
           <span>Contact</span>
           <span>Rules</span>
         </div>
-        <br></br>
-        <br></br>
-        <hr
+        <br />
+        {/* <hr
           border="none"
           height="1px"
           background-color="black"
           margin="1em 0"
-        ></hr>
-        <br></br>
+        ></hr> */}
         <div className="copyright">
           <h3>All rights reserved to Alin's Cinema 2023 ©</h3>
         </div>

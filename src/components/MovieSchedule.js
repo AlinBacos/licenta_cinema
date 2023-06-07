@@ -8,6 +8,9 @@ import { format } from "date-fns";
 import { getStorage, getDownloadURL, listAll } from "firebase/storage";
 import { storage } from "../database/firebase";
 import { useNavigate } from "react-router-dom";
+import Modal from "react-modal";
+import YouTube from "react-youtube";
+import Card from "./Card";
 
 const MovieSchedule = () => {
   const [todoData, setTodoData] = useState([]);
@@ -16,7 +19,11 @@ const MovieSchedule = () => {
   const [weekDay, setWeekDay] = useState("");
   const [imageUrls, setImageUrls] = useState([]);
   const [imageNames, setImageNames] = useState([]);
+  const [moviesArray, setMoviesArray] = useState([]);
   const navigate = useNavigate();
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [videoId, setVideoId] = useState("");
 
   useEffect(() => {
     const imagesRef = sRef(storage, `posters`);
@@ -30,6 +37,7 @@ const MovieSchedule = () => {
       .then((urls) => {
         setImageUrls(urls);
       });
+
     const countRef = ref(db, "movie/");
     onValue(countRef, (snapshot) => {
       const data = snapshot.val();
@@ -40,6 +48,18 @@ const MovieSchedule = () => {
       setTodoData(newPosts);
     });
   }, []);
+
+  const matchImage = () => {
+    todoData.map((item, index) => {
+      imageUrls.map((url, index) => {
+        if (imageNames[index].includes(item.uid)) {
+          item.imageUrl = url;
+        }
+      });
+    });
+  };
+
+  matchImage();
 
   const handleSelectChange = (event) => {
     setSelectedValue(event.target.value);
@@ -73,14 +93,6 @@ const MovieSchedule = () => {
 
   return (
     <div className="movie-schedule">
-      {/* <div>
-        <select value={selectedValue} onChange={handleSelectChange}>
-          <option value="">Select an option</option>
-          <option value="Horror">Horror</option>
-          <option value="History">History</option>
-          <option value="Crime">Crime</option>
-        </select>
-      </div> */}
       <div className="week-days">
         <ul>
           <li>
@@ -125,41 +137,18 @@ const MovieSchedule = () => {
         console.log(weekday);
         if (item.genre.includes(selectedValue) && weekday.includes(weekDay)) {
           return (
-            <div className="card">
-              <div className="card-data">
-                <h1>{item.title}</h1>
-                <br></br>
-                <h2>{item.year}</h2>
-                <h2>Directed by:{item.director}</h2>
-                <h2>{item.description}</h2>
-                <h2>Date:{item.date}</h2>
-                <br></br>
-                <h3>{item.genre}</h3>
-                <br></br>
-                <button id="purchase" onClick={purchase}>
-                  BUY TICKET
-                </button>
-              </div>
-              {imageUrls.map((url, index) => {
-                imageNames[index] = imageNames[index].replace(
-                  /([a-z])(?=[A-Z])/g,
-                  "$1 "
-                );
-                if (imageNames[index].includes(item.title)) {
-                  return (
-                    <div className="movie-poster">
-                      <img
-                        width="360px"
-                        height="370px"
-                        key={index}
-                        src={url}
-                        alt={imageNames[index]}
-                      />
-                    </div>
-                  );
-                }
-              })}
-            </div>
+            <Card
+              title={item.title}
+              year={item.year}
+              director={item.director}
+              description={item.description}
+              date={item.date}
+              genre={item.genre}
+              image={item.imageUrl}
+              trailer={item.trailer}
+              duration={item.duration}
+              hour={item.hour}
+            />
           );
         } else {
           if (selectedValue === null) {

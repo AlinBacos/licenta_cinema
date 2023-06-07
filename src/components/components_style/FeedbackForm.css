@@ -1,71 +1,71 @@
-*{
-    padding:0;
-    margin:0;
+* {
+  padding: 0;
+  margin: 0;
 }
 
-.feedback-div{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.feedback-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.feedback-form{
-    display:flex;
-    width:620px;
-    height:400px;
-    background-color:white;
-    border-radius:10px;
-    margin:0 auto;
-    margin-top:40px;
-    box-shadow: 10px -10px  #673AB7;
-    -moz-box-shadow: 10px -10px  #673AB7;
-    -webkit-box-shadow: 10px -10px  #673AB7;
-    -o-box-shadow: 10px -10px  #673AB7;
+.feedback-form {
+  display: flex;
+  width: 620px;
+  height: 640px;
+  background-color: white;
+  border-radius: 10px;
+  margin: 0 auto;
+  margin-top: 40px;
+  box-shadow: 10px -10px #673ab7;
+  -moz-box-shadow: 10px -10px #673ab7;
+  -webkit-box-shadow: 10px -10px #673ab7;
+  -o-box-shadow: 10px -10px #673ab7;
 }
 
-.feedback-form form{
-    width:300px;
-    margin:0 auto;
+.feedback-form form {
+  width: 300px;
+  margin: 0 auto;
 }
 
-.feedback-form form label{
-    display:flex;
-    margin-top:20px;
-    font-size:18px;
-    color:#070702d3;
+.feedback-form form label {
+  display: flex;
+  margin-top: 20px;
+  font-size: 18px;
+  color: #070702d3;
 }
 
-.feedback-form form input{
-    width:100%;
-    padding: 7px;
-    border:none;
-    border:1px solid #070702d3;
-    border-radius:6px;
-    outline:none;
+.feedback-form form input {
+  width: 100%;
+  padding: 7px;
+  border: none;
+  border: 1px solid #070702d3;
+  border-radius: 6px;
+  outline: none;
 }
 
-.feedback-form button{
-    width:300px;
-    height:35px;
-    margin-top:60px;
-    border:none;
-    background-color:#673AB7 ;
-    font-size:18px;
-    color:white;
+.feedback-form button {
+  width: 300px;
+  height: 35px;
+  margin-top: 60px;
+  border: none;
+  background-color: #673ab7;
+  font-size: 18px;
+  color: white;
 }
 
-#message{
-    width:300px;
-    height:150px;
+#message {
+  width: 300px;
+  height: 150px;
 }
 
-#submit{
-    width:300px;
-    height:35px;
-    margin-top:10px;
-    border:none;
-    background-color:#673AB7 ;
-    font-size:18px;
-    color:white;
-    cursor:pointer;
+#submit {
+  width: 300px;
+  height: 35px;
+  margin-top: 10px;
+  border: none;
+  background-color: #673ab7;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
 }

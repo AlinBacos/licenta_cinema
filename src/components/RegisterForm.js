@@ -1,9 +1,9 @@
 import React from "react";
-import "./components_style/RegisterForm.css";
-import { auth } from "../database/firebase";
 import { useState, useEffect } from "react";
+import { auth } from "../database/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import "./components_style/RegisterForm.css";
 
 function RegisterForm() {
   const [email, setEmail] = useState("");
@@ -25,7 +25,7 @@ function RegisterForm() {
   };
 
   const verifyError = (e) => {
-    if (password.length < 11) {
+    if (password.length <= 9) {
       setError(true);
     } else if (!email.includes("@")) {
       setError(true);
@@ -40,28 +40,25 @@ function RegisterForm() {
     await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
-        navigate("Login");
+        navigate("/Login");
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+        console.log(error);
       });
   };
 
   return (
     <div className="register-component">
       <div className="register-form">
-        <form onChange={verifyError}>
+        <div className="register-form-form" onChange={verifyError}>
+          <h1 align="center">Register Form</h1>
           <label>Email</label>
-          <br />
           <input
             type="email"
             value={email}
             onChange={handleEmailChange}
             placeholder="Enter your email"
-          ></input>
-          <br />
+          />
           {error && !email.includes(".com") ? (
             <label id="error">
               ! Email must contain "@", ".com" and cannot be NULL!
@@ -70,14 +67,12 @@ function RegisterForm() {
             ""
           )}
           <label>Password</label>
-          <br />
           <input
             type="password"
             value={password}
             onChange={handlePasswordChange}
             placeholder="Enter your password"
-          ></input>
-          <br />
+          />
           {error && password.length <= 10 ? (
             <label id="error">
               ! Password must be at least 10 characters long and cannot be NULL!
@@ -88,11 +83,10 @@ function RegisterForm() {
           <button onClick={register} disabled={error}>
             Register
           </button>
-          <br />
           <a href="/Login">
             <h4>Already have an account?Login now!</h4>
           </a>
-        </form>
+        </div>
       </div>
     </div>
   );

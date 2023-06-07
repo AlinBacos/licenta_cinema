@@ -6,27 +6,24 @@ body {
   margin: 0;
 }
 
-.movie-schedule .card {
-  /* background-color: #393e46; */
+/* .movie-schedule .Card {
   position: relative;
   color: white;
   margin-right: 10px;
   width: 100vw;
   height: 370px;
   float: left;
-  /* border-radius: 20px; */
   font-family: Garamond, serif;
   margin-bottom: 10px;
   display: flex;
   flex-direction: row;
   overflow: hidden;
   padding-left: 5px;
-  /* font-family: 'Courier New', monospace; */
 }
 
-.movie-schedule .card:hover {
-  background-color: #393e46;
-}
+.movie-schedule .Card:hover {
+  background-color: pink;
+} */
 
 .week-days ul {
   display: flex;
@@ -35,7 +32,6 @@ body {
 }
 
 .week-days li {
-  /* margin-right: 8px; */
   margin-bottom: 10px;
   padding-left: 15px;
   margin-top: 5px;
@@ -72,7 +68,7 @@ body {
   border-radius: 5px;
 }
 
-.card-data {
+/* .card-data {
   margin-left: 20px;
   order: 2;
 }
@@ -80,7 +76,7 @@ body {
 .movie-poster {
   order: 1;
   padding-left: 10px;
-}
+} */
 
 .movie-schedule h1 {
   color: white;
@@ -99,7 +95,7 @@ body {
   padding-left: 20px;
 }
 
-.movie-schedule #purchase {
+/* .movie-schedule #purchase {
   width: 200px;
   height: 35px;
   margin-top: 60px;
@@ -109,4 +105,4 @@ body {
   color: white;
   cursor: pointer;
   border-radius: 5px;
-}
+} */

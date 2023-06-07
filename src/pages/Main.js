@@ -10,6 +10,7 @@ function Main() {
       <div className="main">
         <Slideshow />
       </div>
+      {/* <MovieSchedule /> */}
       <Footer />
     </>
   );

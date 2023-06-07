@@ -1,61 +1,61 @@
-*{
-    padding:0;
-    margin:0;
+* {
+  padding: 0;
+  margin: 0;
 }
 
-.login-component{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.login-component {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.login-form{
-    display:flex;
-    width:620px;
-    height:500px;
-    background-color:white;
-    border-radius:10px;
-    margin:0 auto;
-    margin-top:40px;
-    box-shadow: 10px -10px  #673AB7;
-    -moz-box-shadow: 10px -10px  #673AB7;
-    -webkit-box-shadow: 10px -10px  #673AB7;
-    -o-box-shadow: 10px -10px  #673AB7;
+.login-form {
+  display: flex;
+  width: 620px;
+  height: 500px;
+  background-color: white;
+  border-radius: 10px;
+  margin: 0 auto;
+  margin-top: 140px;
+  box-shadow: 10px -10px #673ab7;
+  -moz-box-shadow: 10px -10px #673ab7;
+  -webkit-box-shadow: 10px -10px #673ab7;
+  -o-box-shadow: 10px -10px #673ab7;
 }
 
-.login-form form{
-    width:300px;
-    margin:0 auto;
+.login-form .wrap {
+  width: 300px;
+  margin: 0 auto;
 }
 
-.login-form form label{
-    display:flex;
-    margin-top:20px;
-    font-size:18px;
-    color:#070702d3;
+.login-form .wrap label {
+  display: flex;
+  margin-top: 20px;
+  font-size: 18px;
+  color: #070702d3;
 }
 
-.login-form form input{
-    width:100%;
-    padding: 7px;
-    border:none;
-    border:1px solid #070702d3;
-    border-radius:6px;
-    outline:none;
+.login-form .wrap input {
+  width: 100%;
+  padding: 7px;
+  border: none;
+  border: 1px solid #070702d3;
+  border-radius: 6px;
+  outline: none;
 }
 
-.login-form button{
-    width:300px;
-    height:35px;
-    margin-top:60px;
-    border:none;
-    background-color:#673AB7 ;
-    font-size:18px;
-    color:white;
-    cursor:pointer;
-    border-radius:5px;
+.login-form .wrap button {
+  width: 300px;
+  height: 35px;
+  margin-top: 60px;
+  border: none;
+  background-color: #673ab7;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
-h4{
-    text-align: center;
+h4 {
+  text-align: center;
 }

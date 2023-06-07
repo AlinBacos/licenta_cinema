@@ -1,22 +1,37 @@
-import React from "react";
-import "./components_style/AddMovieForm.css";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { storage } from "../database/firebase";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytes } from "firebase/storage";
+import { v4 as uuidv4 } from "uuid";
+import { AuthContext } from "./AuthContext";
+import "./components_style/AddMovieForm.css";
 
 function AddMovieForm() {
+  const currentUser = useContext(AuthContext);
+  const [image, setImage] = useState(null);
   const [title, setTitle] = useState("");
   const [year, setYear] = useState("");
   const [genre, setGenre] = useState("");
   const [director, setDirector] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
-  const [imageUpload, setImageUpload] = useState(null);
-  const [selectedValue, setSelectedValue] = useState("");
+  const [hour, setHour] = useState("");
+  const [duration, setDuration] = useState("");
+  const [trailer, setTrailer] = useState("");
+  const genreArray = [
+    { value: "Horror", label: "Horror" },
+    { value: "History", label: "History" },
+    { value: "Crime", label: "Crime" },
+    { value: "Thriller", label: "Thriller" },
+    { value: "Dark Fantasy", label: "Dark Fantasy" },
+    { value: "Drama", label: "Drama" },
+    { value: "Romance", label: "Romance" },
+    { value: "Comedy", label: "Comedy" },
+  ];
 
-  const handleSelectChange = (event) => {
-    setSelectedValue(event.target.value);
-    console.log(selectedValue);
+  const handleImage = (e) => {
+    e.preventDefault();
+    setImage(e.target.files[0]);
   };
 
   const handleTitleChange = (e) => {
@@ -43,13 +58,21 @@ function AddMovieForm() {
     setDate(e.target.value);
   };
 
-  const handleImage = (e) => {
-    e.preventDefault();
-    setImageUpload(e.target.files[0]);
+  const handleHourChange = (e) => {
+    setHour(e.target.value);
+  };
+
+  const handledDurationChange = (e) => {
+    setDuration(e.target.value);
+  };
+
+  const handleTrailerChange = (e) => {
+    setTrailer(e.target.value);
   };
 
   const PostData = async (e) => {
     e.preventDefault();
+    const uid = uuidv4();
     const res = await fetch(
       "https://authentication-firebase-19bfa-default-rtdb.firebaseio.com/movie.json",
       {
@@ -58,18 +81,22 @@ function AddMovieForm() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          uid,
           title,
           year,
           genre,
           director,
           description,
           date,
+          hour,
+          duration,
+          trailer,
         }),
       }
     );
 
-    const imageRef = ref(storage, `posters/${imageUpload.name}`);
-    const upload = await uploadBytes(imageRef, imageUpload);
+    const moviePosterRef = ref(storage, `posters/${uid}`);
+    const uploadPoster = await uploadBytes(moviePosterRef, image);
     window.location.reload(false);
   };
 
@@ -78,68 +105,65 @@ function AddMovieForm() {
       <div className="add-movie-form">
         <form>
           <label>Poster</label>
-          <input type="file" onChange={handleImage}></input>
+          <input type="file" onChange={handleImage} />
           <label>Title</label>
-          <br />
           <input
             type="text"
             placeholder="Title..."
             onChange={handleTitleChange}
-          ></input>
-          <br />
+          />
           <label>Year</label>
-          <br />
           <input
             type="number"
             placeholder="Year..."
             onChange={handleYearChange}
-          ></input>
-          <br />
+          />
           <label>Genre</label>
-          <br />
-          {/* <input
-            type="text"
-            placeholder="Genre..."
-            onChange={handleGenreChange}
-          ></input> */}
-          <select value={selectedValue} onChange={handleSelectChange}>
-            <option value="">Select an option</option>
-            <option value="Horror">Horror</option>
-            <option value="History">History</option>
-            <option value="Crime">Crime</option>
-            <option value="Thriller">Thriller</option>
-            <option value="Dark Fantasy">Dark Fantasy</option>
-            <option value="Drama">Drama</option>
-            <option value="Romance">Romance</option>
-            <option value="Comedy">Comedy</option>
+          <select value={genre} onChange={handleGenreChange}>
+            <option value="">Genre</option>
+            {genreArray.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
           </select>
-          <br />
           <label>Director</label>
-          <br />
           <input
             type="text"
             placeholder="Director..."
             onChange={handleDirectorChange}
-          ></input>
-          <br />
+          />
           <label>Description</label>
-          <br />
           <input
             type="text"
             placeholder="Description..."
             onChange={handleDescriptionChange}
-          ></input>
-          <br />
+          />
           <label>Date</label>
-          <br />
           <input
             type="date"
             placeholder="Date..."
             onChange={handleDateChange}
-          ></input>
-          <br />
+          />
+          <label>Hour</label>
+          <input
+            type="time"
+            placeholder="Hour..."
+            onChange={handleHourChange}
+          />
+          <label>Duration</label>
+          <input
+            type="text"
+            placeholder="Duration..."
+            onChange={handledDurationChange}
+          />
+          <label>Trailer Link</label>
+          <input
+            type="text"
+            placeholder="Date..."
+            onChange={handleTrailerChange}
+          />
           <button onClick={PostData}>Add Movie</button>
-          <br />
         </form>
       </div>
     </div>

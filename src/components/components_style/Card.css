@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+.card {
+  position: relative;
+  color: white;
+  margin-left: 10px;
+  width: 930px;
+  height: 370px;
+  background-color: black;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  /* overflow: hidden; */
+  border-radius: 10px;
+  border-width: 2px;
+}
+
+.info p {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-size: 40px;
+  text-align: center;
+  width: 540px;
+}
+
+.info .details ul {
+  padding: 0;
+  margin-left: 30px;
+  margin-top: 10px;
+  list-style: none;
+  display: flex;
+  gap: 50px;
+  font-family: "Roboto", sans-serif;
+  font-size: 25px;
+  width: 540px;
+}
+
+.info .date_hour ul {
+  padding: 0;
+  margin-left: 30px;
+  margin-top: 30px;
+  list-style: none;
+  /* display: flex; */
+  gap: 50px;
+  font-family: "Roboto", sans-serif;
+  font-size: 25px;
+  width: 540px;
+}
+
+.card:hover {
+  background-color: #393e46;
+}
+
+.info .description {
+  flex-wrap: wrap;
+  height: 100px;
+}
+
+.info .description p {
+  margin-left: 30px;
+  margin-top: 10px;
+  display: flex;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  text-align: left;
+  width: 540px;
+}
+
+.info .buttons ul {
+  padding: 0;
+  margin-left: 30px;
+  margin-top: 10px;
+  list-style: none;
+  display: flex;
+  gap: 50px;
+  font-family: "Roboto", sans-serif;
+  font-size: 25px;
+  width: 540px;
+}
+
+.info .buttons button {
+  width: 100px;
+  height: 35px;
+  border: none;
+  background-color: #673ab7;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* .card:hover {
+  background-color: #393e46;
+}
+
+.card .card-data {
+  margin-left: 20px;
+  order: 2;
+}
+
+.card .movie-poster {
+  order: 1;
+  padding-left: 10px;
+}
+
+.card h1 {
+  color: white;
+  width: 100vw;
+  background: #673ab7;
+  border-radius: 5px;
+  padding-left: 20px;
+}
+
+.card h3 {
+  color: white;
+  background: #673ab7;
+  border-radius: 5px;
+  width: 150px;
+  height: 25px;
+  padding-top: 2px;
+  padding-left: 20px;
+}
+
+.movie__description {
+  font-size: 20px;
+}
+
+.card_cat {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+#year {
+  color: #673ab7;
+  font-weight: bold;
+} */
