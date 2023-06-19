@@ -67,3 +67,42 @@
 h4 {
   text-align: center;
 }
+
+.add-movie-form form .errorTitle {
+  border-color: #b8241a;
+}
+
+.add-movie-form form .errorImage {
+  border-color: #b8241a;
+}
+
+.add-movie-form form .errorYear {
+  border-color: #b8241a;
+}
+
+.add-movie-form form .errorDescription {
+  border-color: #b8241a;
+}
+
+.add-movie-form form .errorDirector {
+  border-color: #b8241a;
+}
+
+.add-movie-form form .errorHour {
+  border-color: #b8241a;
+}
+
+.add-movie-form form .errorDate {
+  border-color: #b8241a;
+}
+.add-movie-form form .errorTrailer {
+  border-color: #b8241a;
+}
+
+.add-movie-form form .errorDuration {
+  border-color: #b8241a;
+}
+
+.add-movie-form form .errorGenre {
+  border-color: #b8241a;
+}

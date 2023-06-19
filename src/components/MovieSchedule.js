@@ -20,6 +20,7 @@ const MovieSchedule = () => {
   const [imageUrls, setImageUrls] = useState([]);
   const [imageNames, setImageNames] = useState([]);
   const [moviesArray, setMoviesArray] = useState([]);
+  const [error, setError] = useState(false);
   const navigate = useNavigate();
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -34,18 +35,30 @@ const MovieSchedule = () => {
         setImageNames(names);
         return Promise.all(res.items.map((item) => getDownloadURL(item)));
       })
+      .catch((error) => {
+        console.log(error);
+        setError(true);
+      })
       .then((urls) => {
         setImageUrls(urls);
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(true);
       });
 
     const countRef = ref(db, "movie/");
     onValue(countRef, (snapshot) => {
       const data = snapshot.val();
-      const newPosts = Object.keys(data).map((key) => ({
-        id: key,
-        ...data[key],
-      }));
-      setTodoData(newPosts);
+      if (data) {
+        const newPosts = Object.keys(data).map((key) => ({
+          id: key,
+          ...data[key],
+        }));
+        setTodoData(newPosts);
+      } else {
+        setTodoData([]);
+      }
     });
   }, []);
 
@@ -91,6 +104,9 @@ const MovieSchedule = () => {
     navigate("/PurchaseTicket");
   };
 
+  if (error) {
+    return <div>No data available</div>;
+  }
   return (
     <div className="movie-schedule">
       <div className="week-days">

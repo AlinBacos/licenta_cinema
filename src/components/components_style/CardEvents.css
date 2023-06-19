@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+.card-event {
+  position: relative;
+  color: white;
+  margin-left: 10px;
+  width: 1000px;
+  height: 370px;
+  background-color: black;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  /* overflow: hidden; */
+  border-radius: 10px;
+  border-width: 2px;
+}
+
+.background img {
+  border-radius: 20px;
+}
+
+.info-event p {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-size: 40px;
+  text-align: left;
+  margin-left: 20px;
+  width: 540px;
+}
+
+.info-event .description {
+  flex-wrap: wrap;
+  height: 100px;
+}
+
+.info-event .description p {
+  margin-left: 20px;
+  margin-top: 10px;
+  display: flex;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  text-align: left;
+  width: 540px;
+}
+
+.info-event .date_hour ul {
+  padding: 0;
+  margin-left: 20px;
+  margin-top: 30px;
+  list-style: none;
+  gap: 50px;
+  font-family: "Roboto", sans-serif;
+  font-size: 25px;
+  width: 540px;
+}
+
+.info-event .type p {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 20px;
+  margin-top: 35px;
+  width: 200px;
+  height: 40px;
+  border: 1px solid white;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

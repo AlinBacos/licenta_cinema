@@ -32,14 +32,15 @@
   display: flex;
   margin-top: 20px;
   font-size: 18px;
-  color: #070702d3;
+  font-weight: bold;
+  color: #673ab7;
 }
 
 .register-form input {
   width: 100%;
   padding: 7px;
   border: none;
-  border: 1px solid #070702d3;
+  border: 2px solid #673ab7;
   border-radius: 6px;
   outline: none;
 }
@@ -62,4 +63,16 @@
 
 #succes {
   color: green;
+}
+
+.register-form-form .errorEmail {
+  border-color: #b8241a;
+}
+
+.register-form-form .errorPassword {
+  border-color: #b8241a;
+}
+
+.input-container {
+  position: relative;
 }

@@ -69,3 +69,23 @@
   color: white;
   cursor: pointer;
 }
+
+.feedback-form form .errorSoundQuality {
+  border-color: #b8241a;
+}
+
+.feedback-form form .errorScreenQuality {
+  border-color: #b8241a;
+}
+
+.feedback-form form .errorTechnicalIssues {
+  border-color: #b8241a;
+}
+
+.feedback-form form .errorImprovements {
+  border-color: #b8241a;
+}
+
+.feedback-form form .errorRating {
+  border-color: #b8241a;
+}

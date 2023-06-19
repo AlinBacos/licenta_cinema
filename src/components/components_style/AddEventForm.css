@@ -67,3 +67,27 @@
 h4 {
   text-align: center;
 }
+
+.add-event-form form .errorTitle {
+  border-color: #b8241a;
+}
+
+.add-event-form form .errorImage {
+  border-color: #b8241a;
+}
+
+.add-event-form form .errorDescription {
+  border-color: #b8241a;
+}
+
+.add-event-form form .errorHour {
+  border-color: #b8241a;
+}
+
+.add-event-form form .errorDate {
+  border-color: #b8241a;
+}
+
+.add-event-form form .errorEvent {
+  border-color: #b8241a;
+}

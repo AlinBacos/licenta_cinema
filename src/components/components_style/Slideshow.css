@@ -1,15 +1,15 @@
-*{
-    padding:0;
-    margin:0;
+* {
+  padding: 0;
+  margin: 0;
 }
 
-.Slideshow{
+.Slideshow {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.Carousel{
-    display:flex;
-    width:90vw;
-    margin-top:40px;
+.Carousel {
+  display: flex;
+  width: 90vw;
+  margin-top: 40px;
 }
