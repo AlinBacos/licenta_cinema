@@ -4,7 +4,7 @@
   position: relative;
   color: white;
   margin-left: 10px;
-  width: 930px;
+  width: 1000px;
   height: 370px;
   background-color: black;
   margin-bottom: 10px;
@@ -78,7 +78,7 @@
 }
 
 .info-movie .buttons button {
-  width: 110px;
+  width: 120px;
   height: 35px;
   border: none;
   background-color: #673ab7;
@@ -86,10 +86,12 @@
   color: white;
   cursor: pointer;
   border-radius: 5px;
+  font-weight: bold;
 }
 
 #purchase {
   background-color: #e6b400;
+  font-weight: bold;
 }
 
 /* #genre {

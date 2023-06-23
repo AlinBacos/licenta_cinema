@@ -73,6 +73,17 @@
   border-color: #b8241a;
 }
 
+.register-form-form .errorVerifyPassword {
+  border-color: #b8241a;
+}
+
 .input-container {
   position: relative;
+}
+
+.register-form-form h1 {
+  text-align: center;
+  color: #673ab7;
+  font-weight: bold;
+  margin-top: 10px;
 }

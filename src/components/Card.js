@@ -73,7 +73,7 @@ function Card({
         <div className="buttons">
           <ul>
             <li>
-              <button onClick={() => openModal(id)}>TICKET</button>
+              <button onClick={() => openModal(id)}>TRAILER</button>
             </li>
             <li>
               <button id="purchase" onClick={redirectPurchase}>

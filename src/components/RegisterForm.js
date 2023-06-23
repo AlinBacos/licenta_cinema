@@ -8,12 +8,14 @@ import "./components_style/RegisterForm.css";
 function RegisterForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [verifyPassword, setVerifyPassword] = useState("");
   const [error, setError] = useState(false);
   const [hidden, setHidden] = useState(true);
   const navigate = useNavigate();
 
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [verifyPasswordError, setVerifyPasswordError] = useState("");
 
   useEffect(() => {
     setHidden(true);
@@ -27,43 +29,45 @@ function RegisterForm() {
     setPassword(e.target.value);
   };
 
-  const verifyError = (e) => {
-    if (password.length <= 9) {
-      setError(true);
-    } else if (!email.includes("@")) {
-      setError(true);
-    } else if (!email.includes(".com")) {
-      setError(true);
-    } else {
-      setError(false);
-    }
+  const handleVerifyPasswordChange = (e) => {
+    setVerifyPassword(e.target.value);
   };
 
   const register = async () => {
     setEmailError("");
     setPasswordError("");
 
+    let valid = true;
+
     if (!email.includes("@") || !email.includes(".com")) {
       setEmailError("Invalid email format");
+      valid = false;
     }
 
     if (email.includes("@admin.com")) {
       setEmailError("Email domain not allowed");
+      valid = false;
     }
 
     if (password.length < 10) {
       setPasswordError("Password should be at least 10 characters long");
+      valid = false;
     }
 
-    if (passwordError || emailError) {
+    if (!(password === verifyPassword)) {
+      setVerifyPasswordError("The password you introduced does not match");
+      valid = false;
+    }
+
+    if (!valid) {
       return;
-    }
-
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      navigate("/Login");
-    } catch (error) {
-      console.log(error);
+    } else {
+      try {
+        await createUserWithEmailAndPassword(auth, email, password);
+        navigate("/Login");
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -90,9 +94,15 @@ function RegisterForm() {
             className={passwordError ? "errorPassword" : ""}
             title={passwordError}
           />
-          {(emailError || passwordError) && (
-            <span textAlign="center">Verifiy error message and try again</span>
-          )}
+          <label>Verify Password</label>
+          <input
+            type="password"
+            value={verifyPassword}
+            onChange={handleVerifyPasswordChange}
+            placeholder="Verify your password"
+            className={verifyPasswordError ? "errorVerifyPassword" : ""}
+            title={verifyPasswordError}
+          />
           <button onClick={register}>Register</button>
           <a href="/Login">
             <h4>Already have an account?Login now!</h4>

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
 .purchase-ticket {
   /* background-color: #0e0e09; */
   /* background-image: url("C:\Users\alinb\Desktop\licenta\src\images\wallpaper.jpg"); */
@@ -5,7 +7,7 @@
   height: 100vh;
   width: 100vw;
   color: white;
-  padding-top: 80px;
+  padding-top: 30px;
   overflow: auto;
   overflow-y: scroll;
 }
@@ -31,16 +33,7 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
-
 .seat-available {
-  background-color: white;
-  height: 15px;
-  width: 15px;
-  margin: 3px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-.seat-selected {
   background-color: green;
   height: 15px;
   width: 15px;
@@ -130,9 +123,35 @@ button {
 }
 
 .reservation {
-  height: 800px;
+  height: 850px;
   width: 1000px;
-  background-color: black;
+  /* background-color: black; */
   margin: 0 auto;
   border-radius: 10px;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1004%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='rgba(24%2c 22%2c 22%2c 1)'%3e%3c/rect%3e%3cpath d='M0%2c349.119C69.254%2c339.96%2c138.166%2c342.333%2c202.484%2c315.072C276.344%2c283.767%2c348.792%2c245.569%2c396.491%2c181.071C450.516%2c108.02%2c500.471%2c19.835%2c487.312%2c-70.065C474.158%2c-159.927%2c393.924%2c-221.683%2c328.341%2c-284.509C268.039%2c-342.276%2c205.757%2c-407.591%2c123.037%2c-419.027C43.406%2c-430.036%2c-22.851%2c-362.839%2c-100.967%2c-343.862C-184.596%2c-323.545%2c-280.403%2c-353.503%2c-350.749%2c-303.925C-426.252%2c-250.713%2c-485.04%2c-162.602%2c-489.094%2c-70.321C-493.084%2c20.513%2c-416.032%2c90.383%2c-371.554%2c169.683C-331.174%2c241.677%2c-314.434%2c337.711%2c-240.103%2c373.608C-166.161%2c409.317%2c-81.404%2c359.885%2c0%2c349.119' fill='%23111010'%3e%3c/path%3e%3cpath d='M1440 1035.997C1529.541 1018.613 1611.956 992.7370000000001 1697.132 960.105 1805.269 918.677 1935.989 910.476 2006.8020000000001 818.85 2081.169 722.625 2116.55 583.446 2077.15 468.392 2038.338 355.055 1895.047 323.567 1808.74 240.485 1732.819 167.401 1702.545 39.900999999999954 1601.378 10.398000000000025 1500.218-19.102999999999952 1406.581 74.344 1302.864 92.95600000000002 1181.507 114.73399999999998 1041.964 56.18599999999998 942.2339999999999 128.683 840.185 202.865 790.922 340.26599999999996 789.112 466.416 787.377 587.368 876.305 684.664 932.722 791.6659999999999 985.6089999999999 891.973 1007.394 1024.974 1109.556 1074.181 1211.518 1123.2910000000002 1328.901 1057.566 1440 1035.997' fill='%231f1c1c'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1004'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.movie-info {
+  text-align: left;
+}
+
+.movie-info label,
+select {
+  display: block;
+  margin-bottom: 3px;
+  font-family: "Roboto", sans-serif;
+}
+
+.movie-info label {
+  font-weight: bold;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+}
+
+.purchase-ticket p {
+  font-weight: bold;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
 }

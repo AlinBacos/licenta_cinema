@@ -27,6 +27,8 @@ export default function NavBar() {
   }
 
   if (currentUser === null) {
+    navigate("/Register");
+  } else if (!currentUser.email.includes("@admin.com")) {
     return (
       <nav className="nav">
         <ul>
@@ -35,20 +37,10 @@ export default function NavBar() {
           <CustomLink to="/Events">Events</CustomLink>
           <CustomLink to="/Feedback">Feedback</CustomLink>
         </ul>
-        <button onClick={redirect}>Login</button>
-      </nav>
-    );
-  } else if (currentUser.email != "admin@yahoo.com") {
-    return (
-      <nav className="nav">
-        <ul>
-          <CustomLink to="/">Main</CustomLink>
-          <CustomLink to="/Schedule">Schedule</CustomLink>
-          <CustomLink to="/Events">Events</CustomLink>
-          <CustomLink to="/Feedback">Feedback</CustomLink>
-        </ul>
-        <b>{currentUser.email}</b>
-        <button onClick={logout}>Log out</button>
+        <div className="info">
+          <b>{currentUser.email}</b>
+          <button onClick={logout}>Log out</button>
+        </div>
       </nav>
     );
   } else
@@ -62,8 +54,10 @@ export default function NavBar() {
           <CustomLink to="/AddMovie">Add Movie</CustomLink>
           <CustomLink to="/AddEvent">Add Event</CustomLink>
         </ul>
-        <b>{currentUser.email}</b>
-        <button onClick={logout}>Log out</button>
+        <div className="info">
+          <b>{currentUser.email}</b>
+          <button onClick={logout}>Log out</button>
+        </div>
       </nav>
     );
 }

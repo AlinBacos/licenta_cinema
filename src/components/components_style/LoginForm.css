@@ -28,18 +28,19 @@
   margin: 0 auto;
 }
 
-.login-form .wrap label {
+.login-form label {
   display: flex;
   margin-top: 20px;
   font-size: 18px;
-  color: #070702d3;
+  font-weight: bold;
+  color: #673ab7;
 }
 
-.login-form .wrap input {
+.login-form input {
   width: 100%;
   padding: 7px;
   border: none;
-  border: 1px solid #070702d3;
+  border: 2px solid #673ab7;
   border-radius: 6px;
   outline: none;
 }
@@ -58,4 +59,19 @@
 
 h4 {
   text-align: center;
+}
+
+.wrap h1 {
+  text-align: center;
+  color: #673ab7;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.login-form .errorEmail {
+  border-color: #b8241a;
+}
+
+.login-form .errorPassword {
+  border-color: #b8241a;
 }

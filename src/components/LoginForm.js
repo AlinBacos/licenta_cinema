@@ -10,6 +10,8 @@ function LoginForm() {
   const [password, setPassword] = useState("");
   const [user, setUser] = useState([]);
   const navigate = useNavigate();
+  const [passwordError, setPasswordError] = useState("");
+  const [emailError, setEmailError] = useState("");
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -20,14 +22,29 @@ function LoginForm() {
   };
 
   const signIn = async () => {
-    await signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    navigate("/Schedule");
+    let valid = true;
+    if (!email) {
+      valid = false;
+      setEmailError("Email cannot be null");
+    }
+    if (!password) {
+      valid = false;
+      setPasswordError("Password cannot be null");
+    }
+    if (valid) {
+      await signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          navigate("/Schedule");
+        })
+        .catch((error) => {
+          console.log(error);
+          setEmailError("Please verify the data provided is valid");
+          setPasswordError("Please verify the data provided is valid");
+        });
+    } else {
+      return;
+    }
   };
 
   return (
@@ -41,6 +58,8 @@ function LoginForm() {
             value={email}
             onChange={handleEmailChange}
             placeholder="Enter your email"
+            className={emailError ? "errorEmail" : ""}
+            title={emailError}
           />
           <label>Password</label>
           <input
@@ -48,6 +67,8 @@ function LoginForm() {
             value={password}
             onChange={handlePasswordChange}
             placeholder="Enter your password"
+            className={passwordError ? "errorPassword" : ""}
+            title={passwordError}
           />
           <button onClick={signIn} type="submit">
             Login

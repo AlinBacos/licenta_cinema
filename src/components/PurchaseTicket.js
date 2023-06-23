@@ -12,6 +12,7 @@ import domtoimage from "dom-to-image";
 import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const qrCodeGenerator = require("qrcode");
 
@@ -22,8 +23,9 @@ function PurchaseTicket() {
   const [selected, setSelected] = useState([]);
   const uniqueValue = uuidv4();
   const currentUser = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  const amount = 50;
+  const amount = 3000;
 
   const [states, setStates] = useState([]);
   const [filterName, setFilterName] = useState("");
@@ -45,17 +47,22 @@ function PurchaseTicket() {
       });
     });
     sendEmail();
+    handleUpdateSeats();
+    alert("Your ticket was sent to your email!");
+    navigate("/");
   };
 
   const sendEmail = async () => {
     const qrData = uniqueValue;
     const qrCodeDataUrl = await qrCodeGenerator.toDataURL(qrData);
+    const total = amount / 100;
 
     const savedValue = localStorage.getItem("mySelect");
     const messageSent = `Movie: ${title} \n
     Date: ${date}\n
     Time: ${hour}\n
-    Seats number: ${savedValue}\n`;
+    Seats number: ${savedValue}\n
+    Total: ${total} RON`;
 
     const params = {
       from_name: "Royal Cinema",
@@ -137,23 +144,23 @@ function PurchaseTicket() {
 
     if (updatedReservationData[movieIndex].array[seatIndex] === "purchased") {
       return;
+    } else {
+      updatedReservationData[movieIndex].array[seatIndex] =
+        updatedReservationData[movieIndex].array[seatIndex] === "available"
+          ? "purchased"
+          : "available";
+      setReservationData(updatedReservationData);
+      setNumberOfSeats((prevSeats) =>
+        updatedReservationData[movieIndex].array[seatIndex] === "available"
+          ? prevSeats - 1
+          : prevSeats + 1
+      );
+      setSeatSelected(true);
+
+      const updatedSelected = [...selected, seatIndex];
+      setSelected(updatedSelected);
+      localStorage.setItem("mySelect", updatedSelected);
     }
-
-    updatedReservationData[movieIndex].array[seatIndex] =
-      updatedReservationData[movieIndex].array[seatIndex] === "available"
-        ? "purchased"
-        : "available";
-    setReservationData(updatedReservationData);
-    setNumberOfSeats((prevSeats) =>
-      updatedReservationData[movieIndex].array[seatIndex] === "available"
-        ? prevSeats - 1
-        : prevSeats + 1
-    );
-    setSeatSelected(true);
-
-    const updatedSelected = [...selected, seatIndex];
-    setSelected(updatedSelected);
-    localStorage.setItem("mySelect", updatedSelected);
   };
 
   const handleUpdateSeats = () => {
@@ -173,23 +180,22 @@ function PurchaseTicket() {
   return (
     <div className="purchase-ticket">
       <div className="reservation">
-        <label>Movie: {title}</label>
-        <label>Date: {date}</label>
-        <label>Hour: {hour}</label>
-        <select>
-          <option value="15">Student 15 RON</option>
-          <option value="25">Adult 25 RON</option>
-          <option value="10">Child 10 RON</option>
-        </select>
+        <div className="movie-info">
+          <label>Movie: {title}</label>
+          <label>Date: {date}</label>
+          <label>Hour: {hour}</label>
+          <select>
+            <option value="">Ticket Type</option>
+            <option value="15">Student 15 RON</option>
+            <option value="25">Adult 25 RON</option>
+            <option value="10">Child 10 RON</option>
+          </select>
+        </div>
         <br></br>
         <ul className="showcase">
           <li>
             <div className="seat-available"></div>
             <small>Available</small>
-          </li>
-          <li>
-            <div className="seat-selected"></div>
-            <small>Selected</small>
           </li>
           <li>
             <div className="seat-reserved"></div>
@@ -224,12 +230,12 @@ function PurchaseTicket() {
             })}
           </div>
         </div>
-        <p>You have selected {numberOfSeats} seats</p>
+        <p className="numberSeats">You have selected {numberOfSeats} seats</p>
         <StripeCheckout
           token={onToken}
-          name="You're just one step away from viewing the movie!"
+          name="One more step!"
           currency="RON"
-          amount="1900"
+          amount={amount}
           stripeKey="pk_test_51NAyZOK6WFoyNq8XTXUqWGcW4nJXf7N3s8T3ym7fVQJq0WqkBaHLw5wvF43HygtQogao1l3RBkukr3HjP21grHcs00blnOre0h"
         />
       </div>
