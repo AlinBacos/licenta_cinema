@@ -49,13 +49,11 @@ body {
 }
 
 .nav li.active {
-  /*background-color: #777;*/
   border-bottom: 3px solid #673ab7;
   border-radius: 2px;
 }
 
 .nav li:hover {
-  /*background-color: #777;*/
   border-bottom: 3px solid #673ab7;
   border-radius: 2px;
 }
@@ -76,7 +74,6 @@ body {
 }
 
 .nav .info b {
-  /* margin-left: 1300px; */
   margin-top: 20px;
   position: relative;
   margin-right: 10px;

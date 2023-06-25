@@ -7,7 +7,6 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Feedback from "./pages/Feedback";
 import AddEvent from "./pages/AddEvent";
-import Footer from "./components/Footer";
 import PurchaseTicket from "./components/PurchaseTicket";
 import { Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./components/AuthContext";

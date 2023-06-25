@@ -3,10 +3,8 @@ import { db } from "../database/firebase";
 import { ref, onValue } from "firebase/database";
 import { ref as sRef } from "firebase/storage";
 import { useState, useEffect } from "react";
-import { format } from "date-fns";
 import { getDownloadURL, listAll } from "firebase/storage";
 import { storage } from "../database/firebase";
-import { useNavigate } from "react-router-dom";
 import CardEvents from "./CardEvents";
 
 function ScheduleEvents() {

@@ -1,6 +1,5 @@
 import React from "react";
 import "./components_style/CardEvents.css";
-// import Modal from "react-modal";
 import { useState } from "react";
 
 function CardEvents({ image, title, description, date, hour, eventType }) {

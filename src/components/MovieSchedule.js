@@ -8,8 +8,6 @@ import { format } from "date-fns";
 import { getStorage, getDownloadURL, listAll } from "firebase/storage";
 import { storage } from "../database/firebase";
 import { useNavigate } from "react-router-dom";
-import Modal from "react-modal";
-import YouTube from "react-youtube";
 import Card from "./Card";
 
 const MovieSchedule = () => {
@@ -22,9 +20,6 @@ const MovieSchedule = () => {
   const [moviesArray, setMoviesArray] = useState([]);
   const [error, setError] = useState(false);
   const navigate = useNavigate();
-
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [videoId, setVideoId] = useState("");
 
   useEffect(() => {
     const imagesRef = sRef(storage, `posters`);
@@ -98,10 +93,6 @@ const MovieSchedule = () => {
   };
   const selectSunday = (event) => {
     setWeekDay("Sunday");
-  };
-
-  const purchase = () => {
-    navigate("/PurchaseTicket");
   };
 
   if (error) {

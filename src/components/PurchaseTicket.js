@@ -6,10 +6,6 @@ import { useState, useEffect, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import StripeCheckout from "react-stripe-checkout";
 import { v4 as uuidv4 } from "uuid";
-import jsPDF from "jspdf";
-import QRCode from "qrcode-svg";
-import domtoimage from "dom-to-image";
-import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -24,11 +20,8 @@ function PurchaseTicket() {
   const uniqueValue = uuidv4();
   const currentUser = useContext(AuthContext);
   const navigate = useNavigate();
-
-  const amount = 3000;
-
-  const [states, setStates] = useState([]);
-  const [filterName, setFilterName] = useState("");
+  const [price, setPrice] = useState("");
+  const amount = price * 100 * selected.length;
 
   const [reservationData, setReservationData] = useState([]);
   const [id, setId] = useState("");
@@ -43,7 +36,7 @@ function PurchaseTicket() {
       body: JSON.stringify(token),
     }).then((response) => {
       response.json().then((data) => {
-        alert(`We are in business`);
+        alert(`Payment successful`);
       });
     });
     sendEmail();
@@ -52,17 +45,20 @@ function PurchaseTicket() {
     navigate("/");
   };
 
+  const handlePriceChange = (e) => {
+    setPrice(e.target.value);
+  };
+
   const sendEmail = async () => {
     const qrData = uniqueValue;
     const qrCodeDataUrl = await qrCodeGenerator.toDataURL(qrData);
-    const total = amount / 100;
 
     const savedValue = localStorage.getItem("mySelect");
     const messageSent = `Movie: ${title} \n
     Date: ${date}\n
     Time: ${hour}\n
     Seats number: ${savedValue}\n
-    Total: ${total} RON`;
+    Total: ${amount} RON`;
 
     const params = {
       from_name: "Royal Cinema",
@@ -184,7 +180,7 @@ function PurchaseTicket() {
           <label>Movie: {title}</label>
           <label>Date: {date}</label>
           <label>Hour: {hour}</label>
-          <select>
+          <select value={price} onChange={handlePriceChange}>
             <option value="">Ticket Type</option>
             <option value="15">Student 15 RON</option>
             <option value="25">Adult 25 RON</option>

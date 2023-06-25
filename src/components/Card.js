@@ -4,7 +4,6 @@ import Modal from "react-modal";
 import YouTube from "react-youtube";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 function Card({
   title,
@@ -79,7 +78,6 @@ function Card({
               <button id="purchase" onClick={redirectPurchase}>
                 BUY TICKET
               </button>
-              {/* <Link to={`/PurchaseTicket/${title}`}>PURCHASE</Link> */}
             </li>
           </ul>
         </div>

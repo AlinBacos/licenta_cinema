@@ -6,25 +6,6 @@ body {
   margin: 0;
 }
 
-/* .movie-schedule .Card {
-  position: relative;
-  color: white;
-  margin-right: 10px;
-  width: 100vw;
-  height: 370px;
-  float: left;
-  font-family: Garamond, serif;
-  margin-bottom: 10px;
-  display: flex;
-  flex-direction: row;
-  overflow: hidden;
-  padding-left: 5px;
-}
-
-.movie-schedule .Card:hover {
-  background-color: pink;
-} */
-
 .week-days ul {
   display: flex;
   flex-direction: row;
@@ -68,16 +49,6 @@ body {
   border-radius: 5px;
 }
 
-/* .card-data {
-  margin-left: 20px;
-  order: 2;
-}
-
-.movie-poster {
-  order: 1;
-  padding-left: 10px;
-} */
-
 .movie-schedule h1 {
   color: white;
   background: #673ab7;
@@ -94,15 +65,3 @@ body {
   padding-top: 2px;
   padding-left: 20px;
 }
-
-/* .movie-schedule #purchase {
-  width: 200px;
-  height: 35px;
-  margin-top: 60px;
-  border: none;
-  background-color: #db9200;
-  font-size: 18px;
-  color: white;
-  cursor: pointer;
-  border-radius: 5px;
-} */
